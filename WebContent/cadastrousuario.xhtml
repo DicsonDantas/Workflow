@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="template.xhtml">
+
+	<ui:define name="body">
+	
+	<p:growl/>
+		
+	<br/>
+	<p:panel header="#{msgs.tituloPanelcadastroUsuario}" style="width:100%;">
+		<p:panelGrid columns="2" style="width:100%;">
+ 		
+ 		<h:outputLabel for="nome" value="#{msgs.userNome}"/>
+	 	<p:inputText id ="nome" value="#{usuarioMB.usuario.nome}"/>
+	 	
+	 	<h:outputLabel for="sobrenome" value="#{msgs.userSobreNome}"/>
+		<p:inputText id="sobrenome" value="#{usuarioMB.usuario.sobreNome}"/>
+		
+	 	<h:outputLabel for="login" value="#{msgs.userLogin}"/>
+		<p:inputText id="login" value="#{usuarioMB.usuario.login}"/>		
+		 
+		<h:outputLabel for="senha" value="#{msgs.userSenha}"/>
+		<h:inputSecret id="senha" value="#{usuarioMB.usuario.senha}"/>
+		
+		<h:outputLabel for="email" value="#{msgs.userEmail}"/>
+		<p:inputText id="email" value="#{usuarioMB.usuario.email}"/>
+	
+		 <h:outputLabel for="datanascimento" value="#{msgs.userDataNascimento}"/>
+		 <p:calendar id ="datanascimento" value ="#{usuarioMB.usuario.dataNascimento}" pattern="dd/MM/yyyy" />
+		 
+		<h:outputLabel for="numTel" value="#{msgs.userTelefoneResidencial}"/>
+		<p:inputText id="numTel" value="#{usuarioMB.usuario.numTel}" />
+						
+		<h:outputLabel for="numCel" value="#{msgs.userTelefoneMovel}"/>
+		<p:inputText id="numCel" value="#{usuarioMB.usuario.numCel}"/>
+		
+		<h:outputLabel for="cpf" value="#{msgs.userCpf}"/>
+		<p:inputMask mask="999.999.999-99" id="cpf" value="#{usuarioMB.usuario.cpf}" />
+					
+					
+			<ui:remove>
+			<!-- TRECHO COMENTADO PARA QUE SEJA EXIBIDA A MENSAGEM DO PRIMEFACES 
+			E TAMBEM PORQUE NAO FARIA MT SENTIDO DOIS BOTOES PARA HOME DEVERA SER IMPLEMENTADO UM METODO
+			PARA RETORNAR A HOME-->
+			
+			<p:commandLink action="#{usuarioMB.goHome}"  icon="ui-icon-home" style=" width:5px;height:10px" value="Pagina Inicial"/>
+			</ui:remove> 
+			
+			<p:commandButton action="#{usuarioMB.salvar}" icon="ui-icon-disk" value="#{msgs.userSalvar}" update="@form"/>	
+			 	  	
+			 	  	
+		 </p:panelGrid>
+	</p:panel>
+	
+	
+	
+	
+	</ui:define>
+	
+	<ui:insert name="footer"/>	
+
+	
+</ui:composition>
+</html>
+
